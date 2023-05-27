@@ -15,7 +15,7 @@ import os
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = os.getenv('key_scrt')
+# app.config['SECRET_KEY'] = os.getenv('key_scrt')
 ckeditor = CKEditor(app)
 Bootstrap(app)
 
