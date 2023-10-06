@@ -15,6 +15,7 @@ import os
 
 app = Flask(__name__)
 
+# user your own key for form submit verification(crf thingy)
 app.config['SECRET_KEY'] = os.getenv('key_scrt')
 ckeditor = CKEditor(app)
 Bootstrap(app)
@@ -114,7 +115,7 @@ def login():
             # print(current_user.id)
             return redirect(url_for('get_all_posts'))
         else:
-            flash('either email or password is incorrect please pu correct')
+            flash('either email or password is incorrect please put correct')
     return render_template("login.html", form=user_login)
 
 
@@ -144,10 +145,10 @@ def show_post(post_id):
         )
         db.session.add(new_comment)
         db.session.commit()
-        return redirect(url_for('show_post',post_id=post_id))
+        return redirect(url_for('show_post', post_id=post_id))
 
     return render_template("post.html", post=requested_post, form=form, current_user=current_user,
-                           logged_in=current_user.is_authenticated,all_comment=all_comments)
+                           logged_in=current_user.is_authenticated, all_comment=all_comments)
 
 
 @app.route("/about")
